@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ShopEase - Amazon Style</title>
+
+<style>
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background: #eaeded;
+}
+
+
+nav {
+  background: #131921;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+}
+
+nav h2 {
+  color: #f3a847;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 15px;
+}
+
+nav ul li {
+  cursor: pointer;
+}
+
+nav ul li:hover {
+  color: #f3a847;
+}
+
+.search-bar {
+  padding: 8px;
+  width: 250px;
+  border-radius: 4px;
+  border: none;
+}
+
+.cart-btn {
+  cursor: pointer;
+}
+
+
+.category-bar {
+  background: #232f3e;
+  color: white;
+  padding: 10px 20px;
+  display: flex;
+  gap: 20px;
+}
+
+.category-bar span {
+  cursor: pointer;
+}
+
+.category-bar span:hover {
+  color: #f3a847;
+}
+
+
+.hero {
+  background: url("https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da") no-repeat center/cover;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.product {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+.product:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.product img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  transition: 0.3s;
+}
+
+.product:hover img {
+  transform: scale(1.05);
+}
+
+.product button {
+  margin-top: 10px;
+  padding: 8px;
+  width: 100%;
+  background: #ffd814;
+  border: none;
+  cursor: pointer;
+}
+
+.product button:hover {
+  background: #f7ca00;
+}
+
+/* CART */
+.cart {
+  position: fixed;
+  right: -400px;
+  top: 0;
+  width: 350px;
+  height: 100%;
+  background: white;
+  padding: 20px;
+  transition: 0.4s;
+  overflow-y: auto;
+}
+
+.cart.active {
+  right: 0;
+}
+
+/* CART ITEM */
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.cart-item button {
+  background: red;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+/* ANIMATION */
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <h2>ShopEase</h2>
+
+  <ul>
+        <li onclick="showSection('home')">Home</li>
+    <li onclick="showSection('categories')">Categories</li>
+    <li onclick="showSection('about')">About</li>
+    <li onclick="showSection('contact')">Contact/Help</li>
+  </ul>
+
+  <input class="search-bar" id="search" placeholder="Search products...">
+
+  <div class="cart-btn" onclick="toggleCart()">🛒 (<span id="count">0</span>)</div>
+</nav>
+
+<!-- CATEGORY BAR -->
+<div class="category-bar">
+  <span onclick="filter('all')">All</span>
+  <span onclick="filter('clothes')">Clothes</span>
+  <span onclick="filter('electronics')">Electronics</span>
+  <span onclick="filter('fruits')">Fruits</span>
+</div>
+
+<!-- HERO -->
+<div class="hero">Welcome to ShopEase</div>
+
+<!-- PRODUCTS -->
+<div class="products" id="products"></div>
+
+<!-- CART -->
+<div class="cart" id="cart">
+  <h2>Your Cart</h2>
+  <div id="cart-items"></div>
+</div>
+
+<script>
+
+/* PRODUCTS */
+const products = [
+  { id: 1, name: "T-Shirt", price: 20, category: "clothes", img: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab" },
+  { id: 2, name: "Shoes", price: 50, category: "clothes", img: "https://images.unsplash.com/photo-1542291026-7eec264c27ff" },
+  { id: 3, name: "Jeans", price: 40, category: "clothes", img: "https://images.unsplash.com/photo-1541099649105-f69ad21f3246" },
+  { id: 4, name: "Laptop", price: 500, category: "electronics", img: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8" },
+  { id: 5, name: "Phone", price: 300, category: "electronics", img: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9" },
+  { id: 6, name: "Headphones", price: 80, category: "electronics", img: "https://store.silentdiscodirect.co.uk/cdn/shop/files/image_1569563739_04_cadc9755-2368-403d-8dee-2eab5eb27b27.jpg?v=1700590085&width=990"},
+  { id: 8, name: "Banana", price: 3, category: "fruits", img: "https://pamsdailydish.com/wp-content/uploads/2015/04/Bunch-Bananas-1.jpg" },
+  { id: 9, name: "Orange", price: 4, category: "fruits", img: "https://www.allrecipes.com/thmb/LxYI7rgsZihshxReotwCXq0uoqw=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-1205638014-2000-d0fbf9170f2d43eeb046f56eec65319c.jpg" },
+  { id: 10, name: "Strawberry", price: 6, category: "fruits", img: "https://images.unsplash.com/photo-1464965911861-746a04b4bca6" }
+];
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+const productContainer = document.getElementById("products");
+const cartContainer = document.getElementById("cart-items");
+const count = document.getElementById("count");
+
+/* DISPLAY PRODUCTS */
+function display(list) {
+  productContainer.innerHTML = "";
+
+  list.forEach(p => {
+    const div = document.createElement("div");
+    div.classList.add("product", "fade-in");
+
+    div.innerHTML = `
+      <img src="${p.img}">
+      <h3>${p.name}</h3>
+      <p>$${p.price}</p>
+      <small>${p.category}</small>
+      <button onclick="addToCart(${p.id})">Add to Cart</button>
+    `;
+
+    productContainer.appendChild(div);
+  });
+}
+
+/* FILTER */
+function filter(cat) {
+  if (cat === "all") display(products);
+  else display(products.filter(p => p.category === cat));
+}
+
+/* SEARCH */
+document.getElementById("search").addEventListener("input", (e) => {
+  const val = e.target.value.toLowerCase();
+  display(products.filter(p => p.name.toLowerCase().includes(val)));
+});
+
+/* CART */
+function addToCart(id) {
+  const item = cart.find(p => p.id === id);
+
+  if (item) item.qty++;
+  else {
+    const product = products.find(p => p.id === id);
+    cart.push({ ...product, qty: 1 });
+  }
+
+  updateCart();
+}
+
+function updateCart() {
+  cartContainer.innerHTML = "";
+  let total = 0;
+  let totalItems = 0;
+
+  cart.forEach(item => {
+    total += item.price * item.qty;
+    totalItems += item.qty;
+
+    const div = document.createElement("div");
+    div.classList.add("cart-item");
+
+    div.innerHTML = `
+      <span>${item.name} x${item.qty}</span>
+      <button onclick="removeItem(${item.id})">X</button>
+    `;
+
+    cartContainer.appendChild(div);
+  });
+
+  count.innerText = totalItems;
+  localStorage.setItem("cart", JSON.stringify(cart));
+}
+
+function removeItem(id) {
+  cart = cart.filter(item => item.id !== id);
+  updateCart();
+}
+
+function toggleCart() {
+  document.getElementById("cart").classList.toggle("active");
+}
+
+function showAll() {
+  display(products);
+}
+
+/* INIT */
+display(products);
+updateCart();
+
+</script>
+
+</body>
+</html>
