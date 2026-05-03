@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nithinkumar Bachu | Frontend Developer</title>
+
+<style>
+
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background: linear-gradient(120deg, #0f172a, #1e293b);
+  color: white;
+  line-height: 1.6;
+}
+
+/* GLASS */
+.glass {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: 0.3s;
+}
+
+.glass:hover {
+  transform: translateY(-5px);
+}
+
+/* NAVBAR */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: rgba(0,0,0,0.3);
+  position: sticky;
+  top: 0;
+  backdrop-filter: blur(10px);
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: #38bdf8;
+}
+
+/* HERO */
+.hero {
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.hero-content {
+  padding: 50px;
+  max-width: 700px;
+}
+
+.hero h1 {
+  font-size: 3rem;
+}
+
+.hero span {
+  color: #38bdf8;
+}
+
+.hero p {
+  margin-top: 15px;
+  color: #cbd5e1;
+}
+
+/* BUTTONS */
+.btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background: #38bdf8;
+  color: black;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #0ea5e9;
+}
+
+.btn.secondary {
+  background: transparent;
+  border: 1px solid white;
+  color: white;
+  margin-left: 10px;
+}
+
+/* SECTIONS */
+section {
+  padding: 70px 20px;
+  text-align: center;
+}
+
+h2 {
+  margin-bottom: 20px;
+  font-size: 2rem;
+  color: #38bdf8;
+}
+
+/* ABOUT */
+.about-container {
+  max-width: 750px;
+  margin: auto;
+  padding: 25px;
+}
+
+/* SKILLS */
+.skills-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.skill-box {
+  width: 250px;
+  padding: 20px;
+}
+
+/* PROJECTS */
+.projects-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.project-card {
+  width: 320px;
+  padding: 25px;
+  text-align: left;
+}
+
+.project-card h3 {
+  color: #38bdf8;
+  margin-bottom: 10px;
+}
+
+.project-card a {
+  display: inline-block;
+  margin-top: 10px;
+  color: #38bdf8;
+  text-decoration: none;
+}
+
+.project-card a:hover {
+  text-decoration: underline;
+}
+
+/* CONTACT */
+.contact-info {
+  display: inline-block;
+  padding: 25px;
+}
+
+/* FOOTER */
+footer {
+  margin-top: 40px;
+  padding: 15px;
+  text-align: center;
+  background: rgba(0,0,0,0.3);
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <h2>Nithinkumar</h2>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content glass">
+    <h1>Hi, I'm <span>Nithinkumar</span></h1>
+    <p>Frontend Developer | Passionate about building modern web experiences</p>
+
+    <a href="#projects" class="btn">View Projects</a>
+    <a href="#contact" class="btn secondary">Contact Me</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <h2>About Me</h2>
+  <div class="about-container glass">
+    <p>
+      I am a passionate frontend developer who enjoys building clean, responsive, and interactive web applications.
+      I focus on improving my JavaScript skills and creating real-world projects.
+      I am a passionate Frontend Developer focused on building clean, responsive, and user-friendly web applications. I enjoy transforming ideas into interactive digital experiences using HTML, CSS, and JavaScript.
+
+I have hands-on experience in developing projects such as an e-commerce web application with product filtering, search functionality, and cart management using JavaScript and LocalStorage.
+
+Currently, I am strengthening my skills in JavaScript and exploring modern frontend technologies to build more dynamic and scalable web applications. My goal is to become a professional full-stack developer and contribute to impactful real-world projects.
+
+I am always eager to learn, improve, and take on new challenges that help me grow as a developer.
+    </p>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <h2>Skills</h2>
+
+  <div class="skills-container">
+    <div class="skill-box glass">
+      <h3>Frontend</h3>
+      <p>HTML, CSS, JavaScript</p>
+    </div>
+
+    <div class="skill-box glass">
+      <h3>Tools</h3>
+      <p>Git, VS Code, GitHub</p>
+    </div>
+
+    <div class="skill-box glass">
+      <h3>Learning</h3>
+      <p>React, APIs, Backend Basics</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <h2>Projects</h2>
+
+  <div class="projects-container">
+
+    <div class="project-card glass">
+      <h3>E-Commerce Website</h3>
+      <p>
+        A responsive frontend e-commerce application with product filtering, search, and cart system using JavaScript and LocalStorage.
+        Developed a fully responsive frontend e-commerce web application that simulates a real-world online shopping experience. The platform includes product browsing, category-based filtering, real-time search functionality, and a dynamic shopping cart system.
+
+Built using HTML, CSS, and JavaScript, the project focuses on DOM manipulation, event handling, and state management. LocalStorage is used to persist cart data across sessions, improving user experience.
+
+This project helped strengthen my understanding of frontend architecture, interactive UI development, and JavaScript logic building.
+      </p>
+      <a href="https://bachunithinkumar.github.io/html-training/ecommers1.html" target="_blank">Live Demo →</a>
+    </div>
+
+    <div class="project-card glass">
+      <h3>Urban ZoomIn</h3>
+      <p>Hyperlocal discovery platform for nearby shops and services with real-time updates.
+        Built a hyperlocal discovery platform that helps users find nearby shops and services in real-time. The system provides location-based search, live updates, and user-business interaction features.
+
+The goal of the project is to bridge the gap between local businesses and customers, especially in Tier 2 and Tier 3 cities.
+
+This project strengthened my understanding of real-time systems and user-centric application design.
+      </p>
+
+    </div>
+
+    <div class="project-card glass">
+      <h3>Privacy Risk System</h3>
+      <p>Anomaly detection system using Django + ML for security enhancement.
+        Designed and developed a system to mitigate privacy risks from inference attacks using Django and Machine Learning techniques. The system analyzes user access patterns and detects anomalies in real-time to improve data security.
+
+Implemented a VotingClassifier-based ensemble model to improve prediction accuracy and integrated it with a secure Django backend for deployment.
+
+This project enhanced my knowledge of backend development, machine learning integration, and cybersecurity concepts.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <h2>Contact</h2>
+
+  <div class="contact-info glass">
+    <p>Email: nithinkumarbachu2004@gmail.com</p>
+    <p>GitHub: github.com/bachunithinkumar</p>
+    <p>Linkedin: www.linkedin.com/in/nithin-kumar-bachu-353965232</p>
+  </div>
+</section>
+</body>
+</html>
