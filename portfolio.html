@@ -1,0 +1,785 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Nithin Kumar Bachu — AI and Software Developer Portfolio">
+  <title>Nithin Kumar Bachu | AI Developer</title>
+
+  <style>
+    :root {
+      --bg: #0b1020;
+      --card: #141c32;
+      --primary: #8065ff;
+      --accent: #3dd9c5;
+      --text: #f4f6ff;
+      --muted: #a8b1cc;
+      --border: rgba(191, 202, 255, 0.15);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1100px, 90%);
+      margin: auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(11, 16, 32, 0.96);
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 19px;
+      font-weight: bold;
+    }
+
+    .logo span,
+    .gradient {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      font-size: 14px;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .button {
+      display: inline-block;
+      padding: 11px 18px;
+      border-radius: 10px;
+      font-weight: bold;
+      font-size: 14px;
+      transition: 0.2s;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .primary {
+      background: var(--primary);
+      color: white;
+    }
+
+    .secondary {
+      border: 1px solid var(--border);
+    }
+
+    section {
+      padding: 75px 0;
+    }
+
+    .hero {
+      padding: 100px 0;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      align-items: center;
+      gap: 50px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 7px 13px;
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      color: var(--accent);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    h1 {
+      font-size: clamp(40px, 6vw, 68px);
+      line-height: 1.1;
+      margin: 23px 0;
+    }
+
+    h2 {
+      font-size: clamp(29px, 4vw, 42px);
+      line-height: 1.2;
+      margin-bottom: 18px;
+    }
+
+    .intro,
+    .muted {
+      color: var(--muted);
+    }
+
+    .intro {
+      font-size: 17px;
+      max-width: 620px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
+    .profile {
+      background: linear-gradient(145deg, #202b49, var(--card));
+      border: 1px solid var(--border);
+      padding: 32px;
+      border-radius: 25px;
+      text-align: center;
+    }
+
+    .avatar {
+      width: 90px;
+      height: 90px;
+      display: grid;
+      place-items: center;
+      margin: 0 auto 20px;
+      border-radius: 25px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      font-size: 30px;
+      font-weight: bold;
+    }
+
+    .profile h3 {
+      margin-bottom: 7px;
+    }
+
+    .profile p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .section-heading {
+      margin-bottom: 30px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      max-width: 600px;
+      margin-top: 8px;
+    }
+
+    .about-grid,
+    .education-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 25px;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .stat {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      padding: 20px;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 21px;
+      color: var(--accent);
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+    }
+
+    .skill-icon {
+      color: var(--accent);
+      font-size: 25px;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+
+    .skill-card h3 {
+      margin-bottom: 8px;
+      font-size: 16px;
+    }
+
+    .skill-card p {
+      font-size: 13px;
+    }
+
+    .projects-section {
+      background: rgba(20, 33, 61, 0.3);
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .project-card {
+      overflow: hidden;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      transition: 0.2s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--primary);
+    }
+
+    .project-art {
+      min-height: 170px;
+      display: grid;
+      place-items: center;
+      padding: 25px;
+      background: linear-gradient(135deg, #202b49, #11182b);
+    }
+
+    .project-symbol {
+      font-size: 52px;
+    }
+
+    .project-content {
+      padding: 25px;
+    }
+
+    .label {
+      color: var(--accent);
+      text-transform: uppercase;
+      font-size: 11px;
+      letter-spacing: 1px;
+      font-weight: bold;
+    }
+
+    .project-content h3 {
+      font-size: 23px;
+      margin: 10px 0;
+    }
+
+    .project-content p {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 17px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-bottom: 22px;
+    }
+
+    .tag {
+      font-size: 11px;
+      background: rgba(128, 101, 255, 0.15);
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      padding: 5px 9px;
+    }
+
+    .project-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .project-links a {
+      color: #c5baff;
+    }
+
+    .project-links a:hover {
+      color: var(--accent);
+    }
+
+    .video-section {
+      margin-top: 25px;
+      padding: 28px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+      align-items: center;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: var(--card);
+    }
+
+    .video-section p {
+      color: var(--muted);
+      font-size: 14px;
+      margin: 12px 0 20px;
+    }
+
+    .video-placeholder {
+      min-height: 220px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 20px;
+      background: #090e1c;
+      border: 1px dashed var(--border);
+      border-radius: 15px;
+    }
+
+    .play {
+      width: 58px;
+      height: 58px;
+      display: grid;
+      place-items: center;
+      margin: 0 auto 15px;
+      border-radius: 50%;
+      background: var(--primary);
+      font-size: 23px;
+    }
+
+    .video-placeholder p {
+      font-size: 12px;
+    }
+
+    .education-card {
+      border-left: 3px solid var(--primary);
+    }
+
+    .education-card h3 {
+      margin: 10px 0;
+    }
+
+    .education-card .date {
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .contact-box {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 25px;
+      flex-wrap: wrap;
+      padding: 35px;
+      border-radius: 22px;
+      border: 1px solid var(--border);
+      background: var(--card);
+    }
+
+    footer {
+      padding: 25px 0;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    @media (max-width: 800px) {
+      .hero-grid,
+      .about-grid,
+      .education-grid,
+      .video-section {
+        grid-template-columns: 1fr;
+      }
+
+      .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding: 65px 0;
+      }
+    }
+
+    @media (max-width: 550px) {
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .skills-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      section {
+        padding: 55px 0;
+      }
+
+      .contact-box {
+        padding: 23px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav class="container">
+      <a class="logo" href="#home">NITHIN <span>BACHU</span></a>
+
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <a class="button secondary"
+         href="https://github.com/bachunithinkumar"
+         target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">MSc Artificial Intelligence Student</span>
+
+          <h1>
+            Building useful things with
+            <span class="gradient">AI &amp; code.</span>
+          </h1>
+
+          <p class="intro">
+            Hi, I'm Nithin Kumar Bachu — an aspiring software developer
+            exploring artificial intelligence, Python, and web development.
+            I enjoy turning ideas into practical projects and learning by building.
+          </p>
+
+          <div class="actions">
+            <a class="button primary" href="#projects">Explore Projects ↓</a>
+            <a class="button secondary"
+               href="https://www.linkedin.com/in/nithin-kumar-bachu-353965232/"
+               target="_blank" rel="noopener noreferrer">Connect on LinkedIn ↗</a>
+          </div>
+
+          <p class="muted" style="margin-top:22px;font-size:13px">
+            London, UK · AI · Python · Web Development
+          </p>
+        </div>
+
+        <div class="profile">
+          <div class="avatar">NB</div>
+          <h3>Nithin Kumar Bachu</h3>
+          <p>AI student · Aspiring software developer · Curious problem solver</p>
+          <div class="tags" style="justify-content:center;margin-top:20px">
+            <span class="tag">Python</span>
+            <span class="tag">Flask</span>
+            <span class="tag">SQL</span>
+            <span class="tag">AI</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-heading">
+          <span class="label">About me</span>
+          <h2>Learning by building.</h2>
+          <p>Growing my software development skills through practical projects and hands-on learning.</p>
+        </div>
+
+        <div class="about-grid">
+          <article class="card">
+            <p>
+              I'm studying for an MSc in Artificial Intelligence at
+              London Metropolitan University. I'm interested in how AI
+              can help people work with information and make everyday tasks easier.
+            </p>
+            <br>
+            <p>
+              My projects include a PDF question-answering chatbot and a
+              job-application tracker. I'm continually improving my programming,
+              problem-solving, and application development skills.
+            </p>
+          </article>
+
+          <div class="stats">
+            <div class="stat"><strong>AI + Web</strong><span>Practical digital projects</span></div>
+            <div class="stat"><strong>Python</strong><span>Backend programming practice</span></div>
+            <div class="stat"><strong>Hands-on</strong><span>Learn, build, improve</span></div>
+            <div class="stat"><strong>London</strong><span>United Kingdom</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-heading">
+          <span class="label">My toolkit</span>
+          <h2>Skills I'm developing</h2>
+          <p>My growing toolkit for building websites, Python applications, and AI prototypes.</p>
+        </div>
+
+        <div class="skills-grid">
+          <article class="card skill-card">
+            <div class="skill-icon">Py</div>
+            <h3>Python</h3>
+            <p class="muted">Programming fundamentals, application logic, and data handling.</p>
+          </article>
+
+          <article class="card skill-card">
+            <div class="skill-icon">AI</div>
+            <h3>Artificial Intelligence</h3>
+            <p class="muted">Embeddings, retrieval, machine learning, and deep-learning concepts.</p>
+          </article>
+
+          <article class="card skill-card">
+            <div class="skill-icon">&lt;/&gt;</div>
+            <h3>Web Development</h3>
+            <p class="muted">HTML, CSS, JavaScript, and responsive layouts.</p>
+          </article>
+
+          <article class="card skill-card">
+            <div class="skill-icon">DB</div>
+            <h3>Backend &amp; Data</h3>
+            <p class="muted">Flask, REST-style endpoints, SQL basics, and SQLite.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="projects-section" id="projects">
+      <div class="container">
+        <div class="section-heading">
+          <span class="label">Selected work</span>
+          <h2>My projects</h2>
+          <p>Projects where I apply what I'm learning to build practical applications.</p>
+        </div>
+
+        <div class="project-grid">
+          <article class="project-card">
+            <div class="project-art">
+              <span class="project-symbol">📄 ✨</span>
+            </div>
+
+            <div class="project-content">
+              <span class="label">AI · Document Intelligence</span>
+              <h3>DocuMind AI</h3>
+              <p>
+                A PDF question-answering chatbot that lets users upload documents
+                and ask questions about their content. Built with Python, Flask,
+                PDF text extraction, embeddings, retrieval, and Ollama.
+              </p>
+
+              <div class="tags">
+                <span class="tag">Python</span>
+                <span class="tag">Flask</span>
+                <span class="tag">RAG</span>
+                <span class="tag">Sentence Transformers</span>
+                <span class="tag">Ollama</span>
+              </div>
+
+              <div class="project-links">
+                <a href="https://expert-memory-5gg5qvwxr957c7wv6-5000.app.github.dev/"
+                   target="_blank" rel="noopener noreferrer">Open Live Project ↗</a>
+                <a href="#demo-video">View Demo Section ↓</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-art">
+              <span class="project-symbol">💼 📊</span>
+            </div>
+
+            <div class="project-content">
+              <span class="label">Web App · Productivity</span>
+              <h3>JobPilotAI</h3>
+              <p>
+                A job-search tracking application concept for organising job
+                applications, preferences, and progress with a simple dashboard.
+              </p>
+
+              <div class="tags">
+                <span class="tag">Python</span>
+                <span class="tag">Flask</span>
+                <span class="tag">SQLite</span>
+                <span class="tag">Web App</span>
+              </div>
+
+              <div class="project-links">
+                <a href="https://github.com/bachunithinkumar/JobPilotAI"
+                   target="_blank" rel="noopener noreferrer">View GitHub Repository ↗</a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="video-section" id="demo-video">
+          <div>
+            <span class="label">Project walkthrough</span>
+            <h2>DocuMind AI <span class="gradient">Demo</span></h2>
+            <p>
+              The recorded demo can be added here once it is ready.
+              Show the PDF upload, document processing, a question, and the answer.
+            </p>
+            <a class="button primary"
+               href="https://expert-memory-5gg5qvwxr957c7wv6-5000.app.github.dev/"
+               target="_blank" rel="noopener noreferrer">Open DocuMind AI ↗</a>
+          </div>
+
+          <div class="video-placeholder">
+            <div>
+              
+<div class="video-placeholder">
+  <div style="width: 100%;">
+  <video
+  controls
+  playsinline
+  preload="metadata"
+  style="width:100%;max-height:420px;border-radius:12px;background:#050812"
+>
+  <source src="documind-demo.mp4" type="video/mp4">
+  Your browser does not support video playback.
+</video>
+
+    <strong style="display: block; margin-top: 16px;">
+      DocuMind AI — Project Demonstration
+    </strong>
+    <span>Watch the document upload and AI question-answering workflow.</span>
+  </div>
+</div>
+
+              <strong>DocuMind AI — Demo Video</strong>
+              <p>Suggested length: 60–90 seconds<br>Upload PDF → Ask a question → Show answer</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <div class="container">
+        <div class="section-heading">
+          <span class="label">Learning journey</span>
+          <h2>Education</h2>
+        </div>
+
+        <div class="education-grid">
+          <article class="card education-card">
+            <span class="date">2026 – Present</span>
+            <h3>MSc Artificial Intelligence</h3>
+            <p class="muted">London Metropolitan University, London, UK.</p>
+          </article>
+
+          <article class="card education-card">
+            <span class="date">2021 – 2025</span>
+            <h3>BTech — Computer Science &amp; Engineering</h3>
+            <p class="muted">
+              Christu Jyothi Institute of Technology and Science (CJITS).
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact-box">
+          <div>
+            <span class="label">Let's connect</span>
+            <h2>Let's learn and build together.</h2>
+            <p class="muted">
+              Interested in junior software development, web development,
+              AI projects, and opportunities to keep learning.
+            </p>
+          </div>
+
+          <div class="actions">
+            <a class="button primary"
+               href="https://www.linkedin.com/in/nithin-kumar-bachu-353965232/"
+               target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+
+            <a class="button secondary"
+               href="https://github.com/bachunithinkumar"
+               target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-row">
+      <span>© <span id="year">2026</span> Nithin Kumar Bachu</span>
+      <span>Built with curiosity, AI &amp; code.</span>
+      <a href="#home">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <script>
+    // Keep the copyright year up to date.
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+  </script>
+</body>
+</html>
